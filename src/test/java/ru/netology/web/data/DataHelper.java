@@ -2,7 +2,7 @@ package ru.netology.web.data;
 
 import com.github.javafaker.Faker;
 import lombok.Value;
-import org.checkerframework.checker.units.qual.C;
+//import org.checkerframework.checker.units.qual.C;
 
 public class DataHelper {
     private DataHelper() {
