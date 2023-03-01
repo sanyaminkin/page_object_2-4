@@ -58,33 +58,33 @@ class MoneyTransferTest {
 
     @Test
     void shouldTransferMoneyToFirstCardFromSecondCardV3Test() {
-        amount = startBalanceFirstCard - 1;
+        amount = startBalanceSecondCard - 1;
         DashboardPage dashboardPage = new DashboardPage();
         var topUpPage = dashboardPage.topUpFirstCard();
         var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.SuccessfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
-        assertEquals(1, finalBalanceFirstCard);
-        assertEquals(startBalanceSecondCard + amount, finalBalanceSecondCard);
+        assertEquals(1, finalBalanceSecondCard);
+        assertEquals(startBalanceFirstCard + amount, finalBalanceFirstCard);
     }
 
     @Test
     void shouldTransferMoneyToFirstCardFromSecondCardV4Test() {
-        amount = startBalanceFirstCard;
+        amount = startBalanceSecondCard;
         DashboardPage dashboardPage = new DashboardPage();
         var topUpPage = dashboardPage.topUpFirstCard();
         var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.SuccessfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
-        assertEquals(0, finalBalanceFirstCard);
-        assertEquals(startBalanceSecondCard + amount, finalBalanceSecondCard);
+        assertEquals(0, finalBalanceSecondCard);
+        assertEquals(startBalanceFirstCard + amount, finalBalanceFirstCard);
     }
 
     @Test
     void shouldGetErrorIfAmountAboveCurrentBalanceTest() {
-        amount = startBalanceFirstCard + 1;
+        amount = startBalanceSecondCard + 1;
         DashboardPage dashboardPage = new DashboardPage();
         var topUpPage = dashboardPage.topUpFirstCard();
         var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
@@ -119,28 +119,28 @@ class MoneyTransferTest {
 
     @Test
     void shouldTransferMoneyToSecondCardFromFirstCardV3Test() {
-        amount = startBalanceSecondCard - 1;
+        amount = startBalanceFirstCard - 1;
         DashboardPage dashboardPage = new DashboardPage();
         var topUpPage = dashboardPage.topUpSecondCard();
         var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.SuccessfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
-        assertEquals(1, finalBalanceSecondCard);
-        assertEquals(startBalanceSecondCard + amount, finalBalanceFirstCard);
+        assertEquals(1, finalBalanceFirstCard);
+        assertEquals(startBalanceSecondCard + amount, finalBalanceSecondCard);
     }
 
     @Test
     void shouldTransferMoneyToSecondCardFromFirstCardV4Test() {
-        amount = startBalanceSecondCard;
+        amount = startBalanceFirstCard;
         DashboardPage dashboardPage = new DashboardPage();
         var topUpPage = dashboardPage.topUpSecondCard();
         var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.SuccessfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
-        assertEquals(0, finalBalanceSecondCard);
-        assertEquals(startBalanceFirstCard + amount, finalBalanceFirstCard);
+        assertEquals(0, finalBalanceFirstCard);
+        assertEquals(startBalanceSecondCard + amount, finalBalanceSecondCard);
     }
 
     @Test
