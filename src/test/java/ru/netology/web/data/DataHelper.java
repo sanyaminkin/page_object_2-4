@@ -1,6 +1,8 @@
 package ru.netology.web.data;
 
+import com.github.javafaker.Faker;
 import lombok.Value;
+import org.checkerframework.checker.units.qual.C;
 
 public class DataHelper {
     private DataHelper() {
@@ -39,6 +41,11 @@ public class DataHelper {
 
         public static CardNumber getSecondCardNumber() {
             return new CardNumber("5559 0000 0000 0002");
+        }
+
+        public static CardNumber randomCardNumber(){
+            final Faker faker = new Faker();
+            return new CardNumber(faker.numerify("#### #### #### ####"));
         }
     }
 }
