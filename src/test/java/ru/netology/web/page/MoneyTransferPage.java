@@ -16,7 +16,7 @@ public class MoneyTransferPage {
     private SelenideElement errorNotification = $("[data-test-id='error-notification']");
 
     public MoneyTransferPage() {
-        $("[data-test-id=dashboard]").shouldBe(visible).shouldHave(exactText("Пополнение карты"));
+        $("[class = 'heading heading_size_xl heading_theme_alfa-on-white']").shouldBe(visible).shouldHave(exactText("Пополнение карты"));
     }
 
     public DashboardPage SuccessfullMoneyTransfer(String amount, String cardNumber){
@@ -35,5 +35,10 @@ public class MoneyTransferPage {
         transactionFromCardField.setValue(cardNumber);
         topUpActionButton.click();
         errorNotification.shouldBe(visible);
+    }
+
+    public DashboardPage CancelTransfer() {
+        topUpCancelButton.click();
+        return new DashboardPage();
     }
 }
