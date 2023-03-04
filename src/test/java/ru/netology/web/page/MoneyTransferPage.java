@@ -19,25 +19,25 @@ public class MoneyTransferPage {
         $("[class = 'heading heading_size_xl heading_theme_alfa-on-white']").shouldBe(visible).shouldHave(exactText("Пополнение карты"));
     }
 
-    public DashboardPage SuccessfullMoneyTransfer(String amount, String cardNumber){
+    private void fillAmountAndCardNumberField (String amount, String cardNumber) {
         transactionAmountField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.DELETE));
         transactionAmountField.setValue(amount);
         transactionFromCardField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.DELETE));
         transactionFromCardField.setValue(cardNumber);
         topUpActionButton.click();
+    }
+
+    public DashboardPage successfullMoneyTransfer(String amount, String cardNumber){
+        fillAmountAndCardNumberField(amount, cardNumber);
         return new DashboardPage();
     }
 
-    public void UnsuccessfullMoneyTransfer(String amount, String cardNumber) {
-        transactionAmountField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.DELETE));
-        transactionAmountField.setValue(amount);
-        transactionFromCardField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.DELETE));
-        transactionFromCardField.setValue(cardNumber);
-        topUpActionButton.click();
+    public void unsuccessfullMoneyTransfer(String amount, String cardNumber) {
+        fillAmountAndCardNumberField(amount, cardNumber);
         errorNotification.shouldBe(visible);
     }
 
-    public DashboardPage CancelTransfer() {
+    public DashboardPage cancelTransfer() {
         topUpCancelButton.click();
         return new DashboardPage();
     }
