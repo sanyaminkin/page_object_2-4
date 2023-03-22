@@ -30,9 +30,9 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
-    @Value
-    public static class CardNumber {
-        private String cardNumber;
+    //@Value
+    //public static class CardNumber {
+        //private String cardNumber;
 
         public static CardNumber getFirstCardNumber() {
             return new CardNumber("5559 0000 0000 0001");
@@ -48,3 +48,5 @@ public class DataHelper {
         }
     }
 }
+
+//не понимаю как и куда переносить методы из замечания 1
