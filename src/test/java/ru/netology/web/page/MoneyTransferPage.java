@@ -16,7 +16,7 @@ public class MoneyTransferPage {
     private SelenideElement errorNotification = $("[data-test-id='error-notification']");
 
     public MoneyTransferPage() {
-        $("[class = 'heading heading_size_xl heading_theme_alfa-on-white']").shouldBe(visible).shouldHave(exactText("Пополнение карты"));
+        $("[class = 'App_appContainer__3jRx1']").shouldBe(visible).shouldHave(exactText("Пополнение карты"));
     }
 
     private void fillAmountAndCardNumberField (String amount, String cardNumber) {
