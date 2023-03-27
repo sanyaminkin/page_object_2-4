@@ -30,9 +30,10 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
-    //@Value
-    //public static class CardNumber {
-        //private String cardNumber;
+    @Value
+    public static class CardNumber {
+        private String cardNumber;
+    }
 
         public static CardNumber getFirstCardNumber() {
             return new CardNumber("5559 0000 0000 0001");
@@ -42,11 +43,11 @@ public class DataHelper {
             return new CardNumber("5559 0000 0000 0002");
         }
 
-        public static CardNumber randomCardNumber(){
+        public static CardNumber randomCardNumber() {
             final Faker faker = new Faker();
             return new CardNumber(faker.numerify("#### #### #### ####"));
         }
-    }
+
 }
 
-//не понимаю как и куда переносить методы из замечания 1
+

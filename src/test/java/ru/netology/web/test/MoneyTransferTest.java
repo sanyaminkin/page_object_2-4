@@ -11,7 +11,7 @@ import ru.netology.web.page.MoneyTransferPage;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Data
+
 
 class MoneyTransferTest {
     int amount;
@@ -34,7 +34,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToFirstCardFromSecondCardTest() {
         amount = 1;
         var topUpPage = dashboardPage.topUpFirstCard();
-        var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -46,7 +46,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToFirstCardFromSecondCardV2Test() {
         amount = 0;
         var topUpPage = dashboardPage.topUpFirstCard();
-        var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -58,7 +58,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToFirstCardFromSecondCardV3Test() {
         amount = startBalanceSecondCard - 1;
         var topUpPage = dashboardPage.topUpFirstCard();
-        var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -70,7 +70,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToFirstCardFromSecondCardV4Test() {
         amount = startBalanceSecondCard;
         var topUpPage = dashboardPage.topUpFirstCard();
-        var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -82,7 +82,7 @@ class MoneyTransferTest {
     void shouldGetErrorIfAmountAboveCurrentBalanceTest() {
         amount = startBalanceSecondCard + 1;
         var topUpPage = dashboardPage.topUpFirstCard();
-        var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getSecondCardNumber().getCardNumber();
         topUpPage.unsuccessfullMoneyTransfer(Integer.toString(amount), cardNumber);
     }
 
@@ -90,7 +90,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToSecondCardFromFirstCardTest() {
         amount = 1;
         var topUpPage = dashboardPage.topUpSecondCard();
-        var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -102,7 +102,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToSecondCardFromFirstCardV2Test() {
         amount = 0;
         var topUpPage = dashboardPage.topUpSecondCard();
-        var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -114,7 +114,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToSecondCardFromFirstCardV3Test() {
         amount = startBalanceFirstCard - 1;
         var topUpPage = dashboardPage.topUpSecondCard();
-        var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -126,7 +126,7 @@ class MoneyTransferTest {
     void shouldTransferMoneyToSecondCardFromFirstCardV4Test() {
         amount = startBalanceFirstCard;
         var topUpPage = dashboardPage.topUpSecondCard();
-        var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -138,7 +138,7 @@ class MoneyTransferTest {
     void shouldNotAllowNegativeAmountTest() {
         amount = -1;
         var topUpPage = dashboardPage.topUpFirstCard();
-        var cardNumber = DataHelper.CardNumber.getSecondCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getSecondCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
@@ -150,7 +150,7 @@ class MoneyTransferTest {
     void shouldNotAllowNegativeAmountV2Test() {
         amount = -1;
         var topUpPage = dashboardPage.topUpSecondCard();
-        var cardNumber = DataHelper.CardNumber.getFirstCardNumber().getCardNumber();
+        var cardNumber = DataHelper.getFirstCardNumber().getCardNumber();
         var returnPage = topUpPage.successfullMoneyTransfer(Integer.toString(amount), cardNumber);
         int finalBalanceFirstCard = dashboardPage.getFirstCardBalance();
         int finalBalanceSecondCard = dashboardPage.getSecondCardBalance();
